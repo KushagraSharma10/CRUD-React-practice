@@ -28,8 +28,12 @@ const App = () => {
     // setTodos(copytodos);
 
     setTodos([...todos, newTodo]);
+    setTitle("");
   };
 
+  const renderTodos = todos.map((todo) => {
+    return <li key={todo.id}>{todo.title}</li>;
+  });
 
   return (
     <div className="w-full h-screen p-10 bg-zinc-900 text-white">
@@ -48,6 +52,9 @@ const App = () => {
           Create TODO
         </button>
       </form>
+      <hr />
+      <h1 className="mt-5 text-xl">Pending Todos</h1>
+      <ol className="list-decimal p-4">{renderTodos}</ol>
     </div>
   );
 };
