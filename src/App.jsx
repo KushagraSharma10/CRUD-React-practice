@@ -1,4 +1,4 @@
-import { nanoid } from "nanoid";
+
 import React, { useState } from "react";
 import Create from "./components/Create";
 import Read from "./components/Read";

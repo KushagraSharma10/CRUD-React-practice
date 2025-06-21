@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 
 const Create = ({todos , setTodos}) => {
 
@@ -27,7 +27,7 @@ const Create = ({todos , setTodos}) => {
       };
 
   return (
-    <div>
+    <>
         <h1 className="text-lg">Create Tasks</h1>
       <form onSubmit={SubmitHandler}>
         <input
@@ -39,11 +39,11 @@ const Create = ({todos , setTodos}) => {
         />
         <br />
         <br />
-        <button className="bg-green-500 text-white p-2 rounded-lg font-semibold">
-          Create TODO
+        <button className="bg-transparent border text-white px-3  py-1 rounded-lg ">
+          Create Todo
         </button>
       </form>
-    </div>
+    </>
   )
 }
 
