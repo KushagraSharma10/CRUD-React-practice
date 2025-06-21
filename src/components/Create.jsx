@@ -1,40 +1,38 @@
-import { nanoid } from 'nanoid';
-import React, { Fragment, useState } from 'react'
+import { nanoid } from "nanoid";
+import React, { Fragment, useState } from "react";
+import { useForm } from "react-hook-form";
 
-const Create = ({todos , setTodos}) => {
+const Create = ({ todos, setTodos }) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
+  const onSubmit = (data) => console.log(data);
 
-  const [title, setTitle] = useState("");
+  const SubmitHandler = (data) => {
+    data.isCompleted = false;
+    data.id = nanoid();
+    console.log(data)
 
+    const copyTodos = [...todos];
+    copyTodos.push(data);
+    setTodos(copyTodos);
 
-    const SubmitHandler = (e) => {
-        e.preventDefault();
-    
-        const newTodo = {
-          id: nanoid(),
-          title: title,
-          isCompleted: false,
-        };
-    
-        console.log(newTodo);
-    
-        // let copytodos = [...todos];
-        // copytodos.push(newTodo);
-        // setTodos(copytodos);
-    
-        setTodos([...todos, newTodo]);
-        setTitle("");
-      };
+    reset();
+   
+  };
 
   return (
     <>
-        <h1 className="text-lg">Create Tasks</h1>
-      <form onSubmit={SubmitHandler}>
+      <h1 className="text-lg">Create Tasks</h1>
+      <form onSubmit={handleSubmit(SubmitHandler)}>
         <input
-          type="text"
-          onChange={(e) => setTitle(e.target.value)}
+          {...register("title")}
           className="bg-white text-black px-2 py-1.5 mt-2 rounded-lg outline-none"
-          value={title}
+          type="text"
           placeholder="Title"
         />
         <br />
@@ -44,7 +42,7 @@ const Create = ({todos , setTodos}) => {
         </button>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default Create
+export default Create;
