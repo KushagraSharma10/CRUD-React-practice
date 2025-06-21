@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import React, { useState } from 'react'
 
-const Create = () => {
+const Create = ({todos , setTodos}) => {
 
 
   const [title, setTitle] = useState("");
