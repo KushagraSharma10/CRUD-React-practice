@@ -11,16 +11,28 @@ const App = () => {
 
   const [title, setTitle] = useState("");
 
-  )
+  const SubmitHandler = (e) => {
+    e.preventDefault();
+  }
+
+  console.log(title)
 
   return (
-    <div>
-      <h1>Create Tasks</h1>
-      <form>
-        <input type="text" />
+    <div className="w-full h-screen p-10 bg-zinc-900 text-white">
+      <h1 className="text-lg">Create Tasks</h1>
+      <form onSubmit={SubmitHandler}>
+        <input
+          type="text"
+          onChange={(e) => setTitle(e.target.value)}
+          className="bg-white text-black px-2 py-1.5 mt-2 rounded-lg outline-none"
+          value={title}
+          placeholder="Title"
+        />
         <br />
         <br />
-        <button>Create TODO</button>
+        <button className="bg-green-500 text-white p-2 rounded-lg font-semibold">
+          Create TODO
+        </button>
       </form>
     </div>
   );
