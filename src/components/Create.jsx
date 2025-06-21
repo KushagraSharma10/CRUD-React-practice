@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import React, { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Create = ({ todos, setTodos }) => {
   const {
@@ -18,6 +19,8 @@ const Create = ({ todos, setTodos }) => {
     const copyTodos = [...todos];
     copyTodos.push(data);
     setTodos(copyTodos);
+
+    toast.success("Todo is created!")
 
     reset();
   };

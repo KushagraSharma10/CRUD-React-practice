@@ -1,9 +1,12 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const Read = ({ todos, setTodos }) => {
   const deleteHandler = (id) => {
     const filteredTodo = todos.filter((todo) => todo.id !== id)
     setTodos(filteredTodo)
+
+    toast.error("Todo Deleted!")
   };
 
   const renderTodos = todos.map((todo) => {
