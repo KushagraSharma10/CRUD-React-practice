@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import React, { useState } from "react";
 
 const App = () => {
@@ -13,9 +14,22 @@ const App = () => {
 
   const SubmitHandler = (e) => {
     e.preventDefault();
-  }
 
-  console.log(title)
+    const newTodo = {
+      id: nanoid(),
+      title: title,
+      isCompleted: false,
+    };
+
+    console.log(newTodo);
+
+    // let copytodos = [...todos];
+    // copytodos.push(newTodo);
+    // setTodos(copytodos);
+
+    setTodos([...todos, newTodo]);
+  };
+
 
   return (
     <div className="w-full h-screen p-10 bg-zinc-900 text-white">
