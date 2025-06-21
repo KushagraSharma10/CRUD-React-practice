@@ -10,19 +10,16 @@ const Create = ({ todos, setTodos }) => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
-
   const SubmitHandler = (data) => {
     data.isCompleted = false;
     data.id = nanoid();
-    console.log(data)
+    console.log(data);
 
     const copyTodos = [...todos];
     copyTodos.push(data);
     setTodos(copyTodos);
 
     reset();
-   
   };
 
   return (
@@ -30,13 +27,15 @@ const Create = ({ todos, setTodos }) => {
       <h1 className="text-lg">Create Tasks</h1>
       <form onSubmit={handleSubmit(SubmitHandler)}>
         <input
-          {...register("title")}
-          className="bg-white text-black px-2 py-1.5 mt-2 rounded-lg outline-none"
+          {...register("title", { required: "title can not be empty" })}
+          className="bg-white block text-black px-2 py-1.5 mt-2 rounded-lg outline-none"
           type="text"
           placeholder="Title"
         />
+        {<small className="text-sm text-red-500 ">{errors?.title?.message}</small>}
         <br />
         <br />
+
         <button className="bg-transparent border text-white px-3  py-1 rounded-lg ">
           Create Todo
         </button>
