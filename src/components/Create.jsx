@@ -1,9 +1,13 @@
 import { nanoid } from "nanoid";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { todoContext } from "./Wrapper";
 
-const Create = ({ todos, setTodos }) => {
+const Create = () => {
+
+  const [todos, setTodos] = useContext(todoContext)
+
   const {
     register,
     handleSubmit,
